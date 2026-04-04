@@ -18,8 +18,7 @@ const host = process.env.APP_HOST;
 
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://noibo.lanchuyenhangsale.com",
-  "https://www.noibo.lanchuyenhangsale.com",
+  "https://smart-pos-roan.vercel.app",
   process.env.CLIENT_URL,
 ].filter(Boolean);
 
@@ -43,6 +42,15 @@ const START_SERVER = () => {
   );
   app.use(express.json());
   app.use(cookieParser()); // Parse cookies
+  
+  // Health check route cho root URL
+  app.get('/', (req, res) => {
+    res.status(200).json({
+      success: true,
+      message: "SmartPOS Backend API is running successfully!"
+    });
+  });
+
   app.use("/v1", APIs_V1.Router);
 
   //404 not found
