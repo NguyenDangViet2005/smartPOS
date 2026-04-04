@@ -1,55 +1,40 @@
 import { LoginForm } from "@/components/forms/login.form";
 import Image from "next/image";
+import Link from "next/link";
 import { PublicRoute } from "@/components/common/PublicRoute";
+import { ArrowLeft } from "lucide-react";
 
 export default function LoginPage() {
   return (
     <PublicRoute>
-      <div className="grid min-h-svh lg:grid-cols-2">
-        <div className="flex flex-col gap-4 p-6 md:p-10 z-10 bg-background relative">
-          {/* Decorative background pattern */}
-          <div className="absolute inset-0 bg-grid-black/[0.02] -z-10" />
-          <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,white,transparent)] -z-10 bg-muted/10" />
-          <div className="flex justify-center gap-2 md:justify-start">
-            <a href="#" className="flex items-center gap-2">
-              <Image
-                src="/logo/smartpos-logo.png"
-                alt="SmartPOS"
-                width={240}
-                height={80}
-                className="h-20 w-auto object-contain"
-                priority
-              />
-            </a>
-          </div>
-          <div className="flex flex-1 items-center justify-center">
-            <div className="w-full max-w-[450px]">
-              <LoginForm />
-            </div>
-          </div>
-        </div>
-        <div className="relative hidden bg-zinc-900 lg:block overflow-hidden">
+      <div className="min-h-screen bg-white flex flex-col font-sans relative">
+        <div className="absolute top-6 left-6 sm:top-8 sm:left-8 flex flex-col items-start z-10">
+          <Link href="/" className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-blue-600 transition-colors mb-4">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Quay về trang chủ
+          </Link>
           <Image
-            src="/images/login-bg-premium.png"
-            alt="Premium Retail Experience"
-            fill
-            className="object-cover transition-transform duration-700 hover:scale-105"
+            src="/logo/smartpos-logo.png"
+            alt="SmartPOS"
+            width={200}
+            height={60}
+            className="h-10 w-auto object-contain"
             priority
           />
-          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent" />
-          <div className="absolute inset-0 flex flex-col justify-end p-10 text-white z-20">
-            <blockquote className="space-y-4 max-w-lg">
-              <p className="text-xl font-medium leading-relaxed tracking-wide">
-                &ldquo;Giải pháp quản lý thông minh, nâng tầm trải nghiệm mua
-                sắm cho khách hàng của bạn.&rdquo;
+        </div>
+
+        <div className="flex-1 flex flex-col items-center justify-center p-4">
+          <div className="w-full max-w-[400px] mt-24 sm:mt-0">
+            <div className="flex flex-col items-center mb-8">
+              <h2 className="text-2xl font-bold tracking-tight text-center text-gray-900 mb-2">Đăng nhập tài khoản</h2>
+              <p className="text-sm text-gray-500 text-center">
+                Nhập thông tin xác thực để bắt đầu phiên truy cập của bạn
               </p>
-              <div className="flex items-center gap-4 pt-2">
-                <div className="h-0.5 w-10 bg-primary/80"></div>
-                <footer className="text-sm font-medium text-white/90 uppercase tracking-widest">
-                  SmartPOS Future Retail
-                </footer>
-              </div>
-            </blockquote>
+            </div>
+
+            <div className="w-full">
+              <LoginForm />
+            </div>
           </div>
         </div>
       </div>
