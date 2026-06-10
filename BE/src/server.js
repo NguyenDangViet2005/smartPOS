@@ -18,7 +18,7 @@ const host = process.env.APP_HOST;
 
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://smart-pos-roan.vercel.app",
+  "https://smartpos-ndv.vercel.app",
   process.env.CLIENT_URL,
 ].filter(Boolean);
 
@@ -42,7 +42,7 @@ const START_SERVER = () => {
   );
   app.use(express.json());
   app.use(cookieParser()); // Parse cookies
-  
+
   // Health check route cho root URL
   app.get('/', (req, res) => {
     res.status(200).json({
